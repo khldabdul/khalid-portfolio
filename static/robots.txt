@@ -1,0 +1,5 @@
+/* robots.txt file for khalid-portfolio */
+User-agent: *
+Allow: /
+
+Sitemap: https://khalidjabbar.com/sitemap.xml

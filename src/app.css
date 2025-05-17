@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --scroll-behavior: smooth !important;
+    scroll-behavior: smooth !important;
+  }
+
+  body {
+    @apply text-secondary bg-base-100 transition-colors duration-300;
+  }
+}
+
+@layer components {
+  .container-custom {
+    @apply container mx-auto px-4 md:px-6 max-w-6xl;
+  }
+  
+  .section-title {
+    @apply text-2xl md:text-3xl font-bold mb-6 text-secondary;
+  }
+  
+  .section-subtitle {
+    @apply text-xl font-semibold mb-4 text-secondary;
+  }
+  
+  .card-shadow {
+    @apply shadow-md hover:shadow-lg transition-shadow duration-300;
+  }
+  
+  .link-hover {
+    @apply hover:text-primary transition-colors duration-200;
+  }
+}
