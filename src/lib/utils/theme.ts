@@ -56,3 +56,27 @@ export function toggleTheme(currentTheme: Theme): Theme {
   setTheme(newTheme);
   return newTheme;
 }
+
+/**
+ * Get the current theme from document
+ * @returns Current theme
+ */
+export function getCurrentTheme(): Theme {
+  if (!browser) return "light";
+  
+  const dataTheme = document.documentElement.getAttribute("data-theme") as Theme;
+  return dataTheme === "dark" ? "dark" : "light";
+}
+
+/**
+ * Debug theme state - log to console for development
+ */
+export function debugTheme(): void {
+  if (!browser || !window.localStorage) return;
+  
+  console.group('Theme Debug');
+  console.log('HTML data-theme:', document.documentElement.getAttribute('data-theme'));
+  console.log('localStorage theme:', localStorage.getItem('theme'));
+  console.log('System preference:', window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  console.groupEnd();
+}

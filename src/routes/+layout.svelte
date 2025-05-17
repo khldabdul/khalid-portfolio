@@ -2,8 +2,10 @@
   import Footer from "$components/layout/Footer.svelte";
   import Header from "$components/layout/Header.svelte";
   import { initAOS, updateAOS } from "$lib/utils/animation";
-  import { initTheme, toggleTheme, type Theme } from "$lib/utils/theme";
+  import { initTheme, toggleTheme, getCurrentTheme, debugTheme, type Theme } from "$lib/utils/theme";
   import { afterUpdate, onMount } from "svelte";
+  import { browser } from "$app/environment";
+  import { page } from "$app/stores";
   import "../app.css";
 
   // Handle theme toggle
@@ -12,7 +14,17 @@
   onMount(() => {
     theme = initTheme();
     initAOS();
+    
+    // In development mode, debug theme state
+    if (browser && import.meta.env.DEV) {
+      debugTheme();
+    }
   });
+
+  // Monitor page changes to ensure theme stays consistent
+  $: if (browser && $page) {
+    theme = getCurrentTheme();
+  }
 
   afterUpdate(() => {
     updateAOS();
@@ -20,6 +32,11 @@
 
   function handleToggleTheme() {
     theme = toggleTheme(theme);
+    
+    // Debug theme after toggle in development mode
+    if (browser && import.meta.env.DEV) {
+      setTimeout(debugTheme, 100); // Small delay to allow DOM to update
+    }
   }
 </script>
 

@@ -36,6 +36,7 @@ export default {
 				}
 			}
 		],
-		darkTheme: "dark"
+		darkTheme: "dark",
+		base: true
 	}
 };

@@ -8,6 +8,10 @@
     scroll-behavior: smooth !important;
   }
 
+  html {
+    @apply transition-colors duration-300;
+  }
+
   body {
     @apply text-secondary bg-base-100 transition-colors duration-300;
   }

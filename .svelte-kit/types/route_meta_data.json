@@ -3,6 +3,9 @@
 	"/about": [],
 	"/contact": [],
 	"/experience": [],
+	"/favicon.ico": [
+		"src/routes/favicon.ico/+server.ts"
+	],
 	"/projects": [],
 	"/skills": []
 }
